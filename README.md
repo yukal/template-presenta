@@ -38,3 +38,29 @@ $ gulp js
 # Run watcher with BrowserSync
 $ gulp watch
 ```
+
+Usage:
+--------
+
+```bash
+# Cleanup dest directory
+$ gulp clean
+
+# Build
+$ gulp build
+$ gulp
+
+# Build partials
+$ gulp assets
+$ gulp html
+$ gulp sass
+$ gulp js
+
+# Run watcher with BrowserSync
+$ gulp watch
+
+# Packaging source files
+$ ./make 7z
+$ ./make zip
+$ ./make tar
+```
