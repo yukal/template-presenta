@@ -48,9 +48,9 @@ function watcher() {
         }
     });
 
-    gulp.watch('dest/html/**/*.html', html).on('change', browserSync.reload);
-    gulp.watch('dest/sass/**/*.scss', sass).on('change', browserSync.reload);
-    gulp.watch('dest/js/**/*.js', js).on('change', browserSync.reload);
+    gulp.watch('src/html/**/*.html', html).on('change', browserSync.reload);
+    gulp.watch('src/sass/**/*.scss', sass).on('change', browserSync.reload);
+    gulp.watch('src/js/**/*.js', js).on('change', browserSync.reload);
 }
 
 const build = gulp.series(assets, gulp.parallel(html, sass, js));
