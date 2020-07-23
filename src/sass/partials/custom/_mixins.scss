@@ -1,0 +1,7 @@
+// Mixins
+
+@mixin cf-bg-gradient($color1, $color2, $src, $comment) {
+  &::after {
+    background-image: url('../img/bg/#{$src}.jpg')
+  }
+}

@@ -1,0 +1,54 @@
+
+
+<ul class="contacts right">
+    <li class="item">+38 <b>039 123 45 67</b></li>
+    <li class="item">thecompany@email.com</li>
+    <li class="item">&copy; 93 – 2020 TheCompany</li>
+</ul>
+
+<div class="bg-scene index"></div>
+
+<script>
+    function changeScene(e, item) {
+        var layerInfo = document.querySelector('.info');
+
+        document.body.className = 'bg' + item;
+
+        // Aside Menu
+        $(e.target).parent().parent().find('.active').removeClass('active');
+        $(e.target).parent().addClass('active');
+
+        // Info
+        $(layerInfo).find('.active').removeClass('active');
+        layerInfo.children[item].className = 'item active';
+    }
+
+    function gag(e) {
+        e.preventDefault();
+    }
+
+    function clickNav(e) {
+        var alias = this.getAttribute('data-href');
+        e.preventDefault();
+
+        if (alias == 'about') {
+            changeScene(e, 0);
+        }
+    }
+
+    function clickAsideNav(e) {
+        e.preventDefault();
+        var data = $(this).data();
+        changeScene(e, data.item);
+    }
+
+    (function($){
+
+        $('aside .nav').on('click', 'a', clickAsideNav);
+        $('header .nav').on('click', 'a', clickNav);
+
+    })(window.jQuery);
+</script>
+
+</body>
+</html>
