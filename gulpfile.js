@@ -8,6 +8,16 @@ function clean() {
     ;
 }
 
+// Copy vendor libs to source dir
+function vendors() {
+    return gulp.src('node_modules/normalize.css/normalize.css')
+        .pipe(plugins.sass({outputStyle: 'compressed'}))
+        .pipe(plugins.rename('_normalize.scss'))
+        .pipe(gulp.dest('src/sass/vendor'))
+        .pipe(browserSync.stream())
+    ;
+}
+
 function html() {
     return gulp.src('src/html/*.html')
         .pipe(plugins.rigger())
@@ -53,10 +63,11 @@ function watcher() {
     gulp.watch('src/js/**/*.js', js).on('change', browserSync.reload);
 }
 
-const build = gulp.series(assets, gulp.parallel(html, sass, js));
+const build = gulp.series([assets, vendors], gulp.parallel(html, sass, js));
 const watch = gulp.series(build, gulp.parallel(watcher));
 
 exports.clean = clean;
+exports.vendors = vendors;
 exports.assets = assets;
 exports.html = html;
 exports.sass = sass;
