@@ -1,0 +1,119 @@
+/* [lg] min-width 992 */
+
+// @include media-breakpoint-up(lg) {
+@media (min-width: 992px) {
+  body::after {
+    content: "";
+
+    margin: 0;
+    padding: 0;
+    width: 100vw;
+    height: 100vh;
+
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: -1;
+    opacity: 0.4;
+
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    // transition: background-image 400ms ease-out, background-position-x 400ms ease-out;
+    transition: background 800ms ease-out;
+
+    // -webkit-clip-path: circle(90% at 100vw 30vh);
+    // clip-path: circle(90% at 100vw 30vh);
+    -webkit-clip-path: circle(72vw at 100vw 30vh);
+    clip-path: circle(72vw at 100vw 30vh);
+  }
+
+  body {
+    &.bg1  { @include bg-gradient(#003b5ee6, #3c2a3ccc, "../img/bg/01.jpg", "left", "center"); }
+    &.bg2  { @include bg-gradient(#ff00b14d, #113c2ecc, "../img/bg/02.jpg", "left", "center"); }
+    &.bg3  { @include bg-gradient(#244866e6, #00222fcc, "../img/bg/03.jpg", "left", "center"); }
+    &.bg4  { @include bg-gradient(#295e4fe6, #182d4ccc, "../img/bg/04.jpg", "left", "center"); }
+    &.bg5  { @include bg-gradient(#133c7de6, #563232cc, "../img/bg/05.jpg", "left", "center"); }
+    &.bg6  { @include bg-gradient(#00293ae6, #5d4343cc, "../img/bg/06.jpg", "left", "center"); }
+    &.bg7  { @include bg-gradient(#245530e6, #001a23cc, "../img/bg/07.jpg", "left", "center"); }
+    &.bg8  { @include bg-gradient(#685839e6, #080606cc, "../img/bg/08.jpg", "left", "center"); }
+    &.bg9  { @include bg-gradient(#05354ce6, #002c31cc, "../img/bg/09.jpg", "left", "center"); }
+    &.bg10 { @include bg-gradient(#763648ff, #1f4923cc, "../img/bg/10.jpg", "left", "center"); }
+    &.bg11 { @include bg-gradient(#11405de6, #61530fcc, "../img/bg/11.jpg", "left", "center"); }
+
+    &.bg1::after  { @include bg-image("../img/bg/01.jpg", "left", "center", "0.3"); }
+    &.bg2::after  { @include bg-image("../img/bg/02.jpg", "left", "center", "0.2"); }
+    &.bg3::after  { @include bg-image("../img/bg/03.jpg", "left", "center", "0.3"); }
+    &.bg4::after  { @include bg-image("../img/bg/04.jpg", "left", "center", "0.3"); }
+    &.bg5::after  { @include bg-image("../img/bg/05.jpg", "left", "center", "0.3"); }
+    &.bg6::after  { @include bg-image("../img/bg/06.jpg", "left", "center", "0.3"); }
+    &.bg7::after  { @include bg-image("../img/bg/07.jpg", "left", "center", "0.4"); }
+    &.bg8::after  { @include bg-image("../img/bg/08.jpg", "left", "center", "0.4"); }
+    &.bg9::after  { @include bg-image("../img/bg/09.jpg", "left", "center", "0.4"); }
+    &.bg10::after { @include bg-image("../img/bg/10.jpg", "left", "center", "0.4"); }
+    &.bg11::after { @include bg-image("../img/bg/11.jpg", "left", "center", "0.3"); }
+  }
+
+  header#header {
+    padding-top: $gutter - 1;
+    height: calc(#{$gutter - 1} + #{$logo-height});
+  }
+
+  main#main {
+    height: calc(100vh - #{($gutter - 1) * 2} - #{$logo-height + $footer-height});
+    .container {
+      min-height: 440px;
+    }
+  }
+
+  #info {
+    max-width: 610px;
+    text-align: right;
+
+    article {
+      &.active {
+        strong {
+          display: inline-block;
+          margin-bottom: 1.25rem;
+          padding-bottom: 2px;
+          font-size: 1.5rem;
+        }
+
+        h2 {
+          font-size: 3.75rem;
+          margin-bottom: 1.5rem;
+        }
+
+        p {
+          font-size: 1.2rem;
+          line-height: 1.9rem;
+        }
+      }
+    }
+  }
+
+  .flex-md {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+
+    &-btwn {
+      justify-content: space-between;
+    }
+
+    &-left {
+      text-align: left;
+    }
+
+    &-right {
+      text-align: right;
+    }
+
+    &::after {
+      content: none;
+    }
+  }
+}

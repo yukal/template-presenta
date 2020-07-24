@@ -1,26 +1,56 @@
-// MIXINS
-@import "partials/custom/mixins";
+// TODO: Remove Bootstrap and create cleaned CSS theme
+
+// BOOTSTRAP
+//
+// Grid Template
+// @include media-breakpoint-down(xs)    max-width 575px
+// @include media-breakpoint-down(sm)    max-width 767px
+// @include media-breakpoint-down(md)    max-width 991px
+// @include media-breakpoint-down(lg)    max-width 1199px
+// @include media-breakpoint-down(xl)    default
+// @include media-breakpoint-up(xs)      default
+// @include media-breakpoint-up(sm)      min-width 576px
+// @include media-breakpoint-up(md)      min-width 768px
+// @include media-breakpoint-up(lg)      min-width 992px
+// @include media-breakpoint-up(xl)      min-width 1200px
+
+@import "vendor/bootstrap/functions";
+@import "vendor/bootstrap/variables";
+@import "vendor/bootstrap/mixins";
+//@import "vendor/bootstrap/root";
+//@import "vendor/bootstrap/print";
+@import "vendor/bootstrap/reboot";
+@import "vendor/bootstrap/type";
+
+// github.com/necolas/normalize.css
+// @import "vendor/normalize";
 
 /* CUSTOM STYLE */
-
-
-/* MAIN */
-@import "partials/custom/main";
-
-/* TYPOGRAPHY */
-@import "partials/custom/typography";
-
-/* NAVIGATION */
-@import "partials/custom/navigation";
-
-/* BACKGROUND */
-@import "partials/custom/background";
-
-/* INFO */
-@import "partials/custom/info";
-
-/* CONTACTS */
-@import "partials/custom/contacts";
+@import "custom/variables";
+@import "custom/mixins";
+@import "custom/general";
+// @import "custom/backgrounds";
 
 /* MEDIA QUERIES */
-@import "partials/custom/media";
+// 640x306 (Windows Phone)
+@import 'custom/media-queries/max-height-350';
+@import 'custom/media-queries/ie-fix';
+
+@import 'custom/media-queries/max-width-767';
+@import 'custom/media-queries/min-width-768';
+@import 'custom/media-queries/min-width-992';
+@import 'custom/media-queries/max-width-1199';
+@import 'custom/media-queries/larger';
+
+// @include media-breakpoint-down(xs) {
+@media (max-width: 575.98px) {
+  .hide-xs { display: none; }
+}
+// @include media-breakpoint-down(sm) {
+@media (max-width: 767.98px) {
+  .hide-sm { display: none; }
+}
+// @include media-breakpoint-down(md) {
+@media (max-width: 991.98px) {
+  .hide-md { display: none; }
+}

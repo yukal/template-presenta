@@ -1,0 +1,55 @@
+@media (max-height: 350px) {
+  .container {
+    padding-left: $gutter - 2;
+    padding-right: $gutter - 2;
+  }
+
+  body.menu {
+    header#header {
+      #main-menu {
+        padding: 0;
+        min-height: calc(100vh - #{$gutter - 2} - 32px);
+      }
+    }
+  }
+
+  header#header {
+    padding-top: $gutter - 2;
+    min-height: calc(#{$gutter - 2} + 32px);
+    height: auto;
+
+    .nav {
+      flex-wrap: nowrap;
+      a {
+        padding: 0.7rem 0;
+        height: auto;
+      }
+    }
+    .logo {
+      height: 28px;
+      background-size: 160px 50px;
+      background-position-y: -22px;
+      overflow: hidden;
+    }
+    button#btn-menu {
+      width: 34px;
+      height: 28px;
+      border: 0;
+    }
+  }
+
+  main#main .container #info .controls {
+    left: -#{$gutter - 2} !important;
+    li {
+      height: 2rem;
+
+      &:first-of-type {
+        padding-left: $gutter - 2;
+      }
+
+      &:last-of-type {
+        padding-right: $gutter - 2;
+      }
+    }
+  }
+}

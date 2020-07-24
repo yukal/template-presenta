@@ -1,0 +1,112 @@
+// Mixins
+
+@mixin bg-image($img, $pos-x: null, $pos-y: null, $opacity: null) {
+  background: url(#{$img}) #{$pos-x} #{$pos-y}/ cover repeat-x;
+
+  @if $opacity != null {
+    opacity: #{$opacity};
+  }
+}
+
+@mixin bg-gradient($color-a, $color-b: null, $img: null, $pos-x: null, $pos-y: null) {
+  @if $color-b == null {
+    $color-b: $color-a;
+  }
+
+  // FIX COLORS
+  $color-a: rgba(red($color-a), green($color-a), blue($color-a), to-fixed(alpha($color-a)) );
+  $color-b: rgba(red($color-b), green($color-b), blue($color-b), to-fixed(alpha($color-b)) );
+
+  @if $img == null {
+    background: linear-gradient(to bottom, #{$color-a}, #{$color-b});
+  } @else {
+    background: linear-gradient(to bottom, #{$color-a}, #{$color-b}), 
+      url(#{$img}) #{$pos-x} #{$pos-y}/ cover repeat-x;
+
+    // background: linear-gradient(90deg, #{$color-a} 0%, #{$color-a} 20%, #{$color-b} 100%),
+    //     url(#{$img}) #{$pos-x} #{$pos-y}/cover repeat-x;
+  }
+}
+
+@mixin flex-box($direction, $wrap: null, $justify: null, $align: null) {
+  display: -moz-box;
+  display: -webkit-flex;
+  display: flex;
+
+  -webkit-flex-direction: $direction;
+  -ms-flex-direction: $direction;
+  flex-direction: $direction;
+
+  @if $wrap != null {
+    -webkit-flex-wrap: $wrap;
+    -ms-flex-wrap: $wrap;
+    flex-wrap: $wrap;
+  }
+  @if $justify != null {
+    -webkit-justify-content: $justify;
+    justify-content: $justify;
+  }
+  @if $align != null {
+    -webkit-align-items: $align;
+    align-items: $align;
+  }
+}
+
+@mixin flex-col($wrap, $justify: null, $align: null) {
+  @include flex-box(column, $wrap, $justify, $align);
+}
+
+@mixin flex-row($wrap, $justify: null, $align: null) {
+  @include flex-box(row, $wrap, $justify, $align);
+}
+
+@mixin clearfix() {
+  &::after {
+    display: block;
+    clear: both;
+    content: "";
+  }
+}
+
+// SOLUTIONS FROM
+// https://css-tricks.com/snippets/sass/fix-number-n-digits/
+//
+// to-fixed | pow
+
+/// toFixed() function in Sass
+/// @author Hugo Giraudel
+/// @param {Number} $float - Number to format
+/// @param {Number} $digits [2] - Number of digits to leave
+/// @return {Number}
+@function to-fixed($float, $digits: 2) {
+  $sass-precision: 5;
+
+  @if $digits > $sass-precision {
+    @warn "Sass sets default precision to #{$sass-precision} digits, and there is no way to change that for now."
+    + "The returned number will have #{$sass-precision} digits, even if you asked for `#{$digits}`."
+    + "See https://github.com/sass/sass/issues/1122 for further informations.";
+  }
+
+  $pow: pow(10, $digits);
+  @return round($float * $pow) / $pow;
+}
+
+/// Power function
+/// @param {Number} $x
+/// @param {Number} $n
+/// @return {Number}
+@function pow($x, $n) {
+  $ret: 1;
+
+  @if $n >= 0 {
+    @for $i from 1 through $n {
+      $ret: $ret * $x;
+    } 
+  } @else {
+    @for $i from $n to 0 {
+      $ret: $ret / $x;
+    }
+  }
+
+  @return $ret;
+}

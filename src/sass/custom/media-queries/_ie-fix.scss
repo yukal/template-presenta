@@ -1,0 +1,19 @@
+@media (max-width: 767px) and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+  /* IE10+ CSS styles */
+
+  /* IE FIX */
+  /* https://stackoverflow.com/questions/40490954/flex-container-min-height-ignored-in-ie */
+  /* https://stackoverflow.com/questions/34997813/display-inline-block-not-working-in-ie10 */
+
+  main#main {
+    height: calc(100vh - #{$gutter} - #{$logo-height});
+  }
+
+  aside#services-wrapper .nav li {
+    @include flex-col(wrap);
+    a {
+      display: block !important;
+      border: none;
+    }
+  }
+}
