@@ -1,1 +1,2 @@
-//= partials/main.js
+/* Custom */
+//= custom/main.js
