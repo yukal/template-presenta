@@ -63,8 +63,8 @@ function watcher() {
     gulp.watch('src/js/**/*.js', js).on('change', browserSync.reload);
 }
 
-const build = gulp.series([assets, vendors], gulp.parallel(html, sass, js));
-const watch = gulp.series(build, gulp.parallel(watcher));
+const build = gulp.series(assets, vendors, gulp.parallel(html, sass, js));
+const watch = gulp.series(build, watcher);
 
 exports.clean = clean;
 exports.vendors = vendors;
